@@ -29,7 +29,7 @@ define $(PKG)_BUILD
         --disable-doxygen-docs \
         --disable-examples \
         --disable-xmms-plugin \
-        --enable-cpplibs \
+        --disable-cpplibs \
         --enable-ogg \
         --disable-oggtest
     $(MAKE) -C '$(1)' -j '$(JOBS)' bin_PROGRAMS= sbin_PROGRAMS= noinst_PROGRAMS=
