@@ -40,6 +40,7 @@ define $(PKG)_B2_CROSS_BUILD
         threading=multi \
         variant=release \
         toolset=gcc-mxe \
+        optimization=speed \
         --layout=tagged \
         --disable-icu \
         --without-mpi \
