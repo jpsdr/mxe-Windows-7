@@ -3,8 +3,8 @@
 PKG             := libdvdread
 $(PKG)_WEBSITE  := https://www.videolan.org/developers/libdvdnav.html
 $(PKG)_IGNORE   :=
-$(PKG)_VERSION  := 6.0.1
-$(PKG)_CHECKSUM := 28ce4f0063883ca4d37dfd40a2f6685503d679bca7d88d58e04ee8112382d5bd
+$(PKG)_VERSION  := 6.1.3
+$(PKG)_CHECKSUM := ce35454997a208cbe50e91232f0e73fb1ac3471965813a13b8730a8f18a15369
 $(PKG)_SUBDIR   := $(PKG)-$($(PKG)_VERSION)
 $(PKG)_FILE     := $(PKG)-$($(PKG)_VERSION).tar.bz2
 $(PKG)_URL      := https://download.videolan.org/pub/videolan/$(PKG)/$($(PKG)_VERSION)/$($(PKG)_FILE)
