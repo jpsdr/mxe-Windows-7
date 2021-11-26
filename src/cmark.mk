@@ -4,8 +4,8 @@ PKG             := cmark
 $(PKG)_WEBSITE  := https://github.com/commonmark/cmark
 $(PKG)_DESCR    := CommonMark parsing and rendering library and program in C
 $(PKG)_IGNORE   :=
-$(PKG)_VERSION  := 0.29.0
-$(PKG)_CHECKSUM := 2558ace3cbeff85610de3bda32858f722b359acdadf0c4691851865bb84924a6
+$(PKG)_VERSION  := 0.30.3
+$(PKG)_CHECKSUM := 85e9fb515531cc2c9ae176d693f9871774830cf1f323a6758fb187a5148d7b16
 $(PKG)_GH_CONF  := commonmark/cmark/releases
 $(PKG)_DEPS     := cc
 
