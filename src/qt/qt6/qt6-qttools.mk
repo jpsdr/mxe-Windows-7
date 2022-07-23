@@ -32,6 +32,7 @@ endef
 
 define $(PKG)_BUILD_$(BUILD)
     $(QT6_QT_CMAKE) -S '$(SOURCE_DIR)' -B '$(BUILD_DIR)' \
+	-DFEATURE_assistant=OFF \
         -DFEATURE_linguist=ON \
         -DFEATURE_designer=OFF
     cmake --build '$(BUILD_DIR)' -j '$(JOBS)'
