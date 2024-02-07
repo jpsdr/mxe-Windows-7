@@ -11,7 +11,7 @@ $(PKG)_DEPS     := cc boost minizip
 
 define $(PKG)_BUILD
     cd '$(BUILD_DIR)' && $(TARGET)-cmake \
-        -DASSIMP_ENABLE_BOOST_WORKAROUND=OFF \
+        -DASSIMP_ENABLE_BOOST_WORKAROUND=ON \
         -DASSIMP_BUILD_ASSIMP_TOOLS=OFF \
         -DASSIMP_BUILD_SAMPLES=OFF \
         -DASSIMP_BUILD_TESTS=OFF \
