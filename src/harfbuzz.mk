@@ -4,8 +4,8 @@ PKG             := harfbuzz
 $(PKG)_WEBSITE  := https://wiki.freedesktop.org/www/Software/HarfBuzz/
 $(PKG)_DESCR    := HarfBuzz
 $(PKG)_IGNORE   :=
-$(PKG)_VERSION  := 10.2.0
-$(PKG)_CHECKSUM := 620e3468faec2ea8685d32c46a58469b850ef63040b3565cde05959825b48227
+$(PKG)_VERSION  := 10.4.0
+$(PKG)_CHECKSUM := 480b6d25014169300669aa1fc39fb356c142d5028324ea52b3a27648b9beaad8
 $(PKG)_GH_CONF  := harfbuzz/harfbuzz/releases,,,,,.tar.xz
 $(PKG)_DEPS     := cc meson-wrapper brotli cairo freetype-bootstrap glib icu4c
 
