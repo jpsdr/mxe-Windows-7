@@ -25,6 +25,7 @@ endef
 define $(PKG)_BUILD
     cd '$(1)' && CC_FOR_BUILD=$(BUILD_CC) ./configure \
         $(MXE_CONFIGURE_OPTS) \
+        CFLAGS='-std=gnu99' \
         --enable-cxx \
         --without-readline
     $(MAKE) -C '$(1)' -j '$(JOBS)'
@@ -44,6 +45,7 @@ endef
 define $(PKG)_BUILD_$(BUILD)
     mkdir '$(1).build'
     cd    '$(1).build' && '$(1)/configure' \
+        CFLAGS=' -std=gnu17' \
         $(MXE_CONFIGURE_OPTS)
     $(MAKE) -C '$(1).build' -j '$(JOBS)' man1_MANS=
     $(MAKE) -C '$(1).build' -j 1 install man1_MANS=
