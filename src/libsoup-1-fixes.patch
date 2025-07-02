@@ -40,3 +40,15 @@ index 1111111..2222222 100644
  
  if get_option('tests')
    subdir('tests')
+
+--- a/libsoup/soup-socket.c	2025-07-02 21:05:17.741284933 +0200
++++ b/libsoup/soup-socket.c	2025-07-02 21:05:38.954249583 +0200
+@@ -1322,7 +1322,7 @@
+ 		fd = g_socket_get_fd (priv->gsock);
+ 		v6_only = TRUE;
+ 		setsockopt (fd, IPPROTO_IPV6, IPV6_V6ONLY,
+-			    &v6_only, sizeof (v6_only));
++			    (const char *)&v6_only, sizeof (v6_only));
+ 	}
+ #endif
+ 
