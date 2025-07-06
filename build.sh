@@ -40,12 +40,14 @@ MXE_TARGETS=
 
 JOBS=$(($(nproc)+1))
 #SOURCEFORGE_MIRROR = switch.dl.sourceforge.net
-MKVTOOLNIX_DEPENDENCIES=gettext libiconv zlib boost flac ogg pthreads vorbis cmark libdvdread gmp
-MKVTOOLNIX_DEPENDENCIES+=qt6 qt6-qtmultimedia
+MKVTOOLNIX_DEPENDENCIES = gettext libiconv zlib boost flac ogg pthreads vorbis cmark libdvdread gmp
+MKVTOOLNIX_DEPENDENCIES += qt6 qt6-qtmultimedia
+STRAWBERRY_DEPENDENCIES = gstreamer gst-plugins-base gst-plugins-good kdsingleapplication taglib2
 
-LOCAL_PKG_LIST=\$(MKVTOOLNIX_DEPENDENCIES)
+LOCAL_PKG_LIST=\$(MKVTOOLNIX_DEPENDENCIES) \$(STRAWBERRY_DEPENDENCIES)
 local-pkg-list: \$(LOCAL_PKG_LIST)
-mkvtoolnix-deps: local-pkg-list
+mkvtoolnix-deps: \$(MKVTOOLNIX_DEPENDENCIES)
+strawberry-deps: \$(STRAWBERRY_DEPENDENCIES)
 EOF
 
 touch -d '1 year ago' settings.mk
