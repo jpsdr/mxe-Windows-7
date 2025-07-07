@@ -60,3 +60,14 @@ index 1111111..2222222 100644
   	SSLeay_add_ssl_algorithms();
  
  	meth = TLSv1_client_method();
+
+--- a/src/common/timing/timing.c	2025-07-02 21:01:04.301678941 +0200
++++ b/src/common/timing/timing.c	2025-07-02 21:01:05.682676964 +0200
+@@ -35,6 +35,7 @@
+ #ifdef _WIN32
+ #include <windows.h>
+ #include <mmsystem.h>
++#include <sys/time.h>
+ #else
+ #ifdef TIME_WITH_SYS_TIME
+ #  include <sys/time.h>
