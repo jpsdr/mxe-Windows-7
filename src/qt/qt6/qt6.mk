@@ -7,7 +7,7 @@ $(PKG)_VERSION   = $(qt6-qtbase_VERSION)
 $(PKG)_TYPE     := meta
 $(PKG)_DEPS     := $(patsubst $(dir $(lastword $(MAKEFILE_LIST)))/%.mk,%,\
                        $(shell grep -l 'QT6_METADATA' \
-                           $(dir $(lastword $(MAKEFILE_LIST)))/qt6-qt*.mk))
+                           $(dir $(lastword $(MAKEFILE_LIST)))/qt6-qt*.mk | grep -v qtwebview))
 
 # add order-only dep for conf
 $(foreach dep,$(qt6_DEPS),\
