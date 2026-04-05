@@ -15,6 +15,7 @@ define $(PKG)_BUILD
         -DMySQL_INCLUDE_DIR='$(PREFIX)/$(TARGET)/include/mariadb' \
         -DMySQL_LIBRARY_DIR='$(PREFIX)/$(TARGET)/lib/mariadb' \
         -DMySQL_LIBRARY=$(if $(BUILD_STATIC),"`$(TARGET)-pkg-config --libs libmariadb`",'$(PREFIX)/$(TARGET)/lib/mariadb/libmariadb.a') \
+        -DQT_GENERATE_SBOM=ON \
         -DQT_BUILD_TOOLS_WHEN_CROSSCOMPILING=ON
     $(if $(BUILD_STATIC),'$(SED)' -i "/^ *LINK_LIBRARIES = /{s/$$/ `'$(TARGET)-pkg-config' --libs libbrotlidec` -llzma/g}" '$(BUILD_DIR)/build.ninja',)
     # not built for some reason. make dummy so install won't fail
