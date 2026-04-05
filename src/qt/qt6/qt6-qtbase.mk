@@ -39,6 +39,7 @@ define $(PKG)_BUILD
         -DQT_QMAKE_TARGET_MKSPEC=win32-g++ \
         -DQT_BUILD_EXAMPLES=OFF \
         -DQT_BUILD_TESTS=OFF \
+        -DQT_GENERATE_SBOM=ON \
         -DBUILD_WITH_PCH=OFF \
         -DFEATURE_accessibility=ON \
         -DFEATURE_dbus=OFF \
