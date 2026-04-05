@@ -15,7 +15,8 @@ QT6_QT_CMAKE = '$(QT6_PREFIX)/$(if $(findstring mingw,$(TARGET)),bin,libexec)/qt
                    -DCMAKE_INSTALL_PREFIX='$(QT6_PREFIX)'
 
 define $(PKG)_BUILD
-    $(QT6_QT_CMAKE) -S '$(SOURCE_DIR)' -B '$(BUILD_DIR)'
+    $(QT6_QT_CMAKE) -S '$(SOURCE_DIR)' -B '$(BUILD_DIR)' \
+        -DQT_GENERATE_SBOM=ON
     cd '$(BUILD_DIR)' && '$(TARGET)-cmake' --build . -j '$(JOBS)'
     cd '$(BUILD_DIR)' && '$(TARGET)-cmake' --install .
 endef

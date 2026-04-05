@@ -38,6 +38,7 @@ define $(PKG)_BUILD
         -DPKG_CONFIG_EXECUTABLE='$(PREFIX)/bin/$(TARGET)-pkg-config' \
         -DQT_QMAKE_TARGET_MKSPEC=win32-g++ \
         -DQT_BUILD_{EXAMPLES,TESTS}=OFF \
+        -DQT_GENERATE_SBOM=ON \
         -DBUILD_WITH_PCH=OFF \
         -DFEATURE_{accessibility,dbus,glib,icu,opengl_dynamic,openssl,openssl_linked,pkg_config}=ON \
         -DFEATURE_{fontconfig,gtk3,waylandscanner,use_gold_linker_alias}=OFF \
