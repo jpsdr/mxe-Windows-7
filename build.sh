@@ -6,11 +6,13 @@ cd ${0:a:h}
 
 build_x86_64=1
 build_i686=1
+dir=usr-$(git branch --show-current)
 
 while [[ -n $1 ]]; do
   case $1 in
     --amd64|--x86_64|--x86-64|--64) build_i686=0   ;;
     --i686|--32)                    build_x86_64=0 ;;
+    --dir|--usr)                    dir=$2 ; shift ;;
     *)
       echo "error: unknown option $1"
       exit 1
@@ -20,7 +22,6 @@ while [[ -n $1 ]]; do
   shift
 done
 
-dir=usr-$(git branch --show-current)
 mkdir -p ${dir}
 rm -f usr
 ln -s ${dir} usr
@@ -40,14 +41,12 @@ MXE_TARGETS=
 
 JOBS=$(($(nproc)+1))
 #SOURCEFORGE_MIRROR = switch.dl.sourceforge.net
-MKVTOOLNIX_DEPENDENCIES = gettext libiconv zlib boost flac ogg pthreads vorbis cmark libdvdread gmp
-MKVTOOLNIX_DEPENDENCIES += qt6 qt6-qtmultimedia
-STRAWBERRY_DEPENDENCIES = gstreamer gst-plugins-base gst-plugins-good kdsingleapplication taglib2
+MKVTOOLNIX_DEPENDENCIES=gettext libiconv zlib boost flac ogg pthreads vorbis cmark libdvdread gmp
+MKVTOOLNIX_DEPENDENCIES+=qt6 qt6-qtmultimedia
 
-LOCAL_PKG_LIST=\$(MKVTOOLNIX_DEPENDENCIES) \$(STRAWBERRY_DEPENDENCIES)
+LOCAL_PKG_LIST=\$(MKVTOOLNIX_DEPENDENCIES)
 local-pkg-list: \$(LOCAL_PKG_LIST)
-mkvtoolnix-deps: \$(MKVTOOLNIX_DEPENDENCIES)
-strawberry-deps: \$(STRAWBERRY_DEPENDENCIES)
+mkvtoolnix-deps: local-pkg-list
 EOF
 
 touch -d '1 year ago' settings.mk
