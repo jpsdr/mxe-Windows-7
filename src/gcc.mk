@@ -53,6 +53,7 @@ define $(PKG)_CONFIGURE
         --with-nm='$(PREFIX)/bin/$(TARGET)-nm' \
         --enable-libstdcxx-time \
         $(shell [ `uname -s` == Darwin ] && echo "LDFLAGS='-Wl,-no_pie'") \
+	CXXFLAGS='-fno-char8_t' \
         $(PKG_CONFIGURE_OPTS)
 endef
 
@@ -77,6 +78,7 @@ define $(PKG)_BUILD_mingw-w64
         --enable-secure-api \
         --with-default-msvcrt=msvcrt \
         --with-default-win32-winnt=0x0601 \
+	CXXFLAGS="-fno-char8_t" \
         $(mingw-w64-headers_CONFIGURE_OPTS)
     $(MAKE) -C '$(BUILD_DIR).headers' install
 
@@ -92,6 +94,7 @@ define $(PKG)_BUILD_mingw-w64
         --prefix='$(PREFIX)/$(TARGET)' \
         --with-default-msvcrt=msvcrt \
         --with-default-win32-winnt=0x0601 \
+	CXXFLAGS="-fno-char8_t" \
         @gcc-crt-config-opts@ \
         $(mingw-w64-crt_CONFIGURE_OPTS)
     $(MAKE) -C '$(BUILD_DIR).crt' -j '$(JOBS)' || $(MAKE) -C '$(BUILD_DIR).crt' -j '$(JOBS)'
@@ -101,6 +104,7 @@ define $(PKG)_BUILD_mingw-w64
     mkdir '$(BUILD_DIR).pthreads'
     cd '$(BUILD_DIR).pthreads' && '$(BUILD_DIR)/$(mingw-w64_SUBDIR)/mingw-w64-libraries/winpthreads/configure' \
         $(MXE_CONFIGURE_OPTS) \
+	CXXFLAGS="-fno-char8_t" \
         $(mingw-w64-pthreads_CONFIGURE_OPTS)
     $(MAKE) -C '$(BUILD_DIR).pthreads' -j '$(JOBS)' || $(MAKE) -C '$(BUILD_DIR).pthreads' -j '$(JOBS)'
     $(MAKE) -C '$(BUILD_DIR).pthreads' -j 1 $(INSTALL_STRIP_TOOLCHAIN)
