@@ -31,7 +31,7 @@ cat > settings.mk <<EOF
 # Edit build.sh instead.
 
 MXE_USE_CCACHE =
-MXE_PLUGIN_DIRS += plugins/gcc15
+MXE_PLUGIN_DIRS += plugins/gcc16
 
 MXE_TARGETS=
 #MXE_TARGETS+=x86_64-w64-mingw32.static
