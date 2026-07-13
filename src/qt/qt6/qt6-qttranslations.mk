@@ -3,7 +3,7 @@
 PKG := qt6-qttranslations
 $(eval $(QT6_METADATA))
 
-$(PKG)_CHECKSUM := 37c02c81206594c7bb4edca85ac93e8e55a9836b70c960fde6cb0f8623ec5677
+$(PKG)_CHECKSUM := b3b3813bc9d76b545716dc8b6e659fa71b6e2bc14569e9fab6dab8b30650a644
 $(PKG)_DEPS     := cc qt6-qtbase qt6-qttools
 
 QT6_PREFIX   = '$(PREFIX)/$(TARGET)/$(MXE_QT6_ID)'
