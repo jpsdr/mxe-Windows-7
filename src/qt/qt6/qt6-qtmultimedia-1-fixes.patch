@@ -59,5 +59,3 @@ index 1111111..2222222 100644
 +{
 +    QList<QCapturableWindow> result;
  
-     ::EnumWindows(windowHandler, reinterpret_cast<LPARAM>(&result));
- 
