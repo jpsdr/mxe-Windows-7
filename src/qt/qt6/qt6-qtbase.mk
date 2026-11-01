@@ -11,7 +11,7 @@ $(PKG)_SUBDIR   := $(PKG_BASENAME)-everywhere-src-$($(PKG)_VERSION)
 $(PKG)_FILE     := $(PKG_BASENAME)-everywhere-src-$($(PKG)_VERSION).tar.xz
 $(PKG)_URL      := https://download.qt.io/archive/qt/6.12/$($(PKG)_VERSION)/submodules/$($(PKG)_FILE)
 $(PKG)_TARGETS  := $(BUILD) $(MXE_TARGETS)
-$(PKG)_DEPS     := cc dbus freetype harfbuzz jpeg libpng mesa mariadb-connector-c openssl pcre2 sqlite zlib zstd $(BUILD)~$(PKG) \
+$(PKG)_DEPS     := cc freetype harfbuzz jpeg libpng mesa openssl pcre2 zlib zstd $(BUILD)~$(PKG) \
                    $(if $(findstring shared,$(MXE_TARGETS)), icu4c)
 $(PKG)_DEPS_$(BUILD) :=
 $(PKG)_OO_DEPS_$(BUILD) := ninja
@@ -42,8 +42,7 @@ define $(PKG)_BUILD
         -DFEATURE_{accessibility,dbus,glib,icu,opengl_dynamic,openssl,openssl_linked,pkg_config}=ON \
         -DFEATURE_{fontconfig,gtk3,waylandscanner,use_gold_linker_alias}=OFF \
         -DFEATURE_icu=$(CMAKE_SHARED_BOOL) \
-        -DFEATURE_sql_{mysql,odbc,sqlite}=ON \
-        -DFEATURE_sql_psql=OFF \
+        -DFEATURE_sql_{mysql,odbc,psql,sqlite}=OFF \
         -DFEATURE_system_{freetype,harfbuzz,pcre2,sqlite,zlib}=ON \
         -DOPENSSL_USE_STATIC_LIBS=TRUE \
         -DMySQL_INCLUDE_DIR='$(PREFIX)/$(TARGET)/include/mariadb' \
@@ -53,9 +52,6 @@ define $(PKG)_BUILD
 
     cmake --build '$(BUILD_DIR)' -j '$(JOBS)'
     cmake --install '$(BUILD_DIR)'
-    $(if $(BUILD_STATIC),$(SED) -i -e 's/^QMAKE_PRL_LIBS .*/& -lodbc32/;' \
-	      -e 's/^QMAKE_PRL_LIBS_FOR_CMAKE .*/&;-lodbc32/;' \
-              '$(PREFIX)/$(TARGET)/$(MXE_QT6_ID)/plugins/sqldrivers/qsqlodbc.prl',)
 
     mkdir -p '$(CMAKE_TOOLCHAIN_DIR)'
     echo 'set(QT_HOST_PATH "$(PREFIX)/$(BUILD)/$(MXE_QT6_ID)")' \
