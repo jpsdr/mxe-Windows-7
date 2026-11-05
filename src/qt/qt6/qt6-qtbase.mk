@@ -44,7 +44,8 @@ define $(PKG)_BUILD
         -DFEATURE_{fontconfig,gtk3,waylandscanner,use_gold_linker_alias}=OFF \
         -DFEATURE_icu=$(CMAKE_SHARED_BOOL) \
         -DFEATURE_sql_{mysql,odbc,psql,sqlite}=OFF \
-        -DFEATURE_system_{freetype,harfbuzz,pcre2,sqlite,zlib}=ON \
+        -DFEATURE_system_{freetype,harfbuzz,pcre2,zlib}=ON \
+        -DFEATURE_system_sqlite=OFF \
         -DOPENSSL_USE_STATIC_LIBS=TRUE \
         -DMySQL_INCLUDE_DIR='$(PREFIX)/$(TARGET)/include/mariadb' \
         -DMySQL_LIBRARY_DIR='$(PREFIX)/$(TARGET)/lib/mariadb' \
